@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ITodo, addUser, completedUser, deleteUser, setTitle } from "./reducers/Todo/Todo";
+import { ITodo, addUser, completedUser, deleteUser, editUser, openModal, setModal, setText, setTitle } from "./reducers/Todo/Todo";
 import "./App.css"
 
 
@@ -7,6 +7,9 @@ const App = () => {
   const dispatch = useDispatch();
   const todo = useSelector((state:any) => state.Todo.todo);
   const title = useSelector((state:any) => state.Todo.title);
+  const text = useSelector((state: any) => state.Todo.text);
+  const modal = useSelector((state: any) => state.Todo.modal);
+  
   console.log(todo);
   return (
     <div className="flex flex-col justify-center items-center">
@@ -57,12 +60,12 @@ const App = () => {
               >
                 Delete
               </button>
-              {/* <button
+              <button
                 className="p-[6px_30px] bg-[#075964] text-[#fff] rounded-[30px] text-[16px]"
-                onClick={() => dispatch(editUser(item.id))}
+                onClick={() => dispatch(openModal(item))}
               >
                 Edit
-              </button> */}
+              </button>
               <input
                 type="checkbox"
                 name=""
@@ -73,6 +76,38 @@ const App = () => {
             </div>
           );
         })}
+        {modal === true ? (
+          <div className="w-[500px] h-[300px] absolute top-[50%] left-[30%] border-[1px] border-[red] bg-[green] rounded-[40px]">
+            <span
+              className="ml-[400px] text-[20px] cursor-pointer"
+              onClick={() => dispatch(setModal())}
+            >
+              &times;
+            </span>
+            <form
+              action=""
+              className="flex justify-center items-center mt-[100px]"
+              onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
+                dispatch(editUser(event))
+              }
+            >
+              <input
+                type="text"
+                className="outline-none bg-[red] text-[#fff] placeholder:text-[#fff] p-[5px_30px] rounded-[30px]"
+                value={text}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  dispatch(setText(event.target.value))
+                }
+              />
+              <button
+                className="p-[6px_30px] bg-[#075964] text-[#fff] rounded-[30px] text-[16px]"
+                type="submit"
+              >
+                Edit
+              </button>
+            </form>
+          </div>
+        ) : null}
       </section>
     </div>
   );
