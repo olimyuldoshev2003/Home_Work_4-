@@ -51,12 +51,12 @@ const App = () => {
               ) : (
                 <h1 className="text-[#fff] text-[20px]">{item.title}</h1>
               )}
-              {/* <button
+              <button
                 className="p-[6px_30px] bg-[#10608f] text-[#fff] rounded-[30px] text-[16px]"
                 onClick={() => dispatch(deleteUser(item.id))}
               >
                 Delete
-              </button> */}
+              </button>
               {/* <button
                 className="p-[6px_30px] bg-[#075964] text-[#fff] rounded-[30px] text-[16px]"
                 onClick={() => dispatch(editUser(item.id))}
