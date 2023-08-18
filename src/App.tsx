@@ -63,13 +63,13 @@ const App = () => {
               >
                 Edit
               </button> */}
-              {/* <input
+              <input
                 type="checkbox"
                 name=""
                 id=""
                 className="w-[30px] h-[30px]"
                 onClick={() => dispatch(completedUser(item.id))}
-              /> */}
+              />
             </div>
           );
         })}
