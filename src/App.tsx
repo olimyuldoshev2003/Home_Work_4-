@@ -14,14 +14,14 @@ const App = () => {
         <h1 className="text-center text-[60px] text-[#fff] font-[700]">
           TO DO LIST
         </h1>
-        {/* <form
+        <form
           action=""
           onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
             dispatch(addUser(event))
           }
           className="flex items-center gap-[20px]"
-        > */}
-          {/* <input
+        >
+          <input
             type="text"
             name=""
             id=""
@@ -31,14 +31,14 @@ const App = () => {
               dispatch(setTitle(event.target.value))
             }
             className="outline-none bg-[red] text-[#fff] placeholder:text-[#fff] p-[5px_30px] rounded-[30px]"
-          /> */}
-          {/* <button
+          />
+          <button
             type="submit"
             className="p-[6px_30px] bg-[green] text-[#fff] rounded-[30px] text-[16px]"
           >
             Add
-          </button> */}
-        {/* </form> */}
+          </button>
+        </form>
       </header>
       <section className="section mt-[40px] flex flex-col gap-[20px]">
         {todo.map((item: ITodo) => {
