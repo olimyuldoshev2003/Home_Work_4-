@@ -62,13 +62,13 @@ export const Todo = createSlice({
       state.todo = [...state.todo, newObj];
       state.title = "";
     },
-    deleteUser: (state: WritableDraft<ITodoState>, action: IAction) => {
-      state.todo = state.todo.filter((item) => {
+    deleteUser: (state: ITodoState, action: IAction) => {
+      state.todo = state.todo.filter((item: ITodo) => {
         return item.id !== action.payload;
       });
     },
-    completedUser: (state: WritableDraft<ITodoState>, action: IAction) => {
-      state.todo = state.todo.map((item) => {
+    completedUser: (state: ITodoState, action: IAction) => {
+      state.todo = state.todo.map((item: ITodo) => {
         if (item.id === action.payload) {
           item.complete = !item.complete;
         }
@@ -76,7 +76,7 @@ export const Todo = createSlice({
       });
     },
 
-    openModal: (state: WritableDraft<ITodoState>, action: IAction) => {
+    openModal: (state: ITodoState, action: IAction) => {
       state.modal = true;
       state.text = action.payload.title;
       console.log(state.text);
@@ -85,16 +85,16 @@ export const Todo = createSlice({
       console.log(state.idx);
     },
 
-    setModal: (state: WritableDraft<ITodoState>) => {
+    setModal: (state: ITodoState) => {
       state.modal = false;
     },
-    setText: (state: WritableDraft<ITodoState>, action: IAction) => {
+    setText: (state: ITodoState, action: IAction) => {
       state.text = action.payload;
     },
-    editUser: (state: WritableDraft<ITodoState>, action: IAction) => {
+    editUser: (state: ITodoState, action: IAction) => {
       action.payload.preventDefault();
 
-      state.todo = state.todo.map((item: WritableDraft<ITodo>) => {
+      state.todo = state.todo.map((item: ITodo) => {
         if (state.idx === item.id) {
           item.title = state.text;
         }
